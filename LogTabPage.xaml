@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sportTrainingLog="clr-namespace:SportTrainingLog;assembly=SportTrainingLog"
+             mc:Ignorable="d"
+             x:Class="SportTrainingLog.LogTabPage"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             android:TabbedPage.ToolbarPlacement="Bottom"
+             android:TabbedPage.BarBackgroundColor="DodgerBlue">
+  <!--Pages can be added as references or inline-->
+  <TabbedPage.Children>
+      <NavigationPage Title="Add">
+          <x:Arguments>
+              <sportTrainingLog:AddPage />
+          </x:Arguments>
+      </NavigationPage>
+
+      <NavigationPage Title="Browse" >
+          <x:Arguments>
+              <sportTrainingLog:MainPage />
+            </x:Arguments>
+      </NavigationPage>
+
+      <NavigationPage Title="Settings">
+          <x:Arguments>
+              <sportTrainingLog:SettingsPage />
+            </x:Arguments>
+      </NavigationPage>
+  </TabbedPage.Children>
+</TabbedPage>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sportTrainingLog="clr-namespace:SportTrainingLog;assembly=SportTrainingLog"
+             mc:Ignorable="d"
+             x:Class="SportTrainingLog.MainPage">
+
+    <StackLayout>
+        <ListView x:Name="SessionLogView"
+                  ItemsSource="{Binding SessionLog.SessionLogList}"
+                  SeparatorVisibility="None"
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <!--<TextCell Text="{Binding SessionTitle}" Detail="{Binding SessionDetails}" TextColor="Black" /> -->
+                    <ViewCell Height="100">
+                        <Frame BorderColor="DodgerBlue"
+                               CornerRadius="5"
+                               Padding="10"
+                               Margin="10"
+                               HasShadow="True">
+                            <StackLayout BackgroundColor="White"
+                                         Orientation="Vertical">
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding SessionTitle}"
+                                           TextColor="Black" 
+                                           FontSize="20"/>
+                                    <BoxView Color="DodgerBlue"
+                                             HeightRequest="2"
+                                             HorizontalOptions="FillAndExpand" />
+                                    <Label Text="{Binding SessionDetails}"
+                                           TextColor="Black"
+                                           VerticalOptions="EndAndExpand"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

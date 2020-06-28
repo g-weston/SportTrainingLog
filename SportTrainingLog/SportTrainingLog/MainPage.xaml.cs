@@ -16,9 +16,19 @@ namespace SportTrainingLog
         public MainPage()
         {
             InitializeComponent();
+        }
 
-            SessionLogView.ItemsSource = SessionLog.SessionsLogList;
-            
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            SessionLogView.ItemsSource = await App.Database.GetSessionsAsync();
+        }
+
+        private async void DeleteClicked(object sender, EventArgs e)
+        {
+            Session sessionToDelete = (sender as MenuItem).BindingContext as Session;
+            await App.Database.DeleteSessionAsync(sessionToDelete);
+            SessionLogView.ItemsSource = await App.Database.GetSessionsAsync();
         }
     }
 }

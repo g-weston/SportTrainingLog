@@ -27,14 +27,21 @@ namespace SportTrainingLog
         {
             ClearInput();
         }
-        private void AddClicked(object sender, EventArgs e)
+        private async void AddClicked(object sender, EventArgs e)
         {
             DateTime sessionDate = SessionDatePicker.Date;
             string sessionName = EntrySessionName.Text;
             string sessionDetails = EditorSessionDetails.Text;
-            DisplayActionSheet("Details", null, "ok", sessionDate.ToLongDateString() ,sessionName, sessionDetails);
-            
-            SessionLog.SessionsLogList.Add(new Session(sessionDate, sessionName, sessionDetails));
+
+            var session = new Session
+            {
+                SessionDate = sessionDate,
+                SessionTitle = sessionName,
+                SessionDetails = sessionDetails
+            };
+            await App.Database.SaveSessionAsync(session);
+            //await Navigation.PopAsync();
+            await DisplayAlert("Your session has been added", null, "Ok");
 
             ClearInput();
         }

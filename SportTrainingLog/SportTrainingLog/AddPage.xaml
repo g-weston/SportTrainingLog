@@ -16,7 +16,7 @@
             <Label Text="Session Name" FontSize="20"/>
             <Entry x:Name="EntrySessionName" Placeholder="Eg. training" ClearButtonVisibility="WhileEditing" />
             <Label Text="Session Details" FontSize="20"/>
-            <Editor x:Name="EditorSessionDetails" Placeholder="Eg. net" />
+            <Editor x:Name="EditorSessionDetails" Placeholder="Eg. net" AutoSize="TextChanges" />
             <Grid x:Name="UploadButtons" RowSpacing="1" ColumnSpacing="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />

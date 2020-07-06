@@ -5,24 +5,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:sportTrainingLog="clr-namespace:SportTrainingLog;assembly=SportTrainingLog"
              mc:Ignorable="d"
-             x:Class="SportTrainingLog.MainPage">
+             x:Class="SportTrainingLog.MainPage"
+             Title="Session Log">
 
     <StackLayout>
         <ListView x:Name="SessionLogView"
                   SeparatorVisibility="None"
                   HasUnevenRows="True"
-                  IsPullToRefreshEnabled="True">
+                  IsPullToRefreshEnabled="True"
+                  ItemTapped="SessionListItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <!--<TextCell Text="{Binding SessionTitle}" Detail="{Binding SessionDetails}" TextColor="Black" /> -->
                     <ViewCell Height="100">
                         <ViewCell.ContextActions>
-                            <MenuItem 
+                            <MenuItem Clicked="DetailsClicked"
                                       CommandParameter="{Binding .}"
-                                      Text="More" />
+                                      Text="Details" />
                             <MenuItem Clicked="DeleteClicked"
                                       CommandParameter="{Binding .}"
-                                      Text="Delete" IsDestructive="True" />
+                                      Text="Delete" 
+                                      IsDestructive="True" />
                         </ViewCell.ContextActions>
                         <Frame BorderColor="DodgerBlue"
                                CornerRadius="5"
@@ -49,7 +51,7 @@
                                                FontSize="20"
                                                Grid.Row="0"
                                                Grid.ColumnSpan="5"/>
-                                        <Label Text="{Binding ID}"
+                                        <Label Text="{Binding SessionDateTimeOffsetString}"
                                                TextColor="Black" 
                                                FontSize="10"
                                                HorizontalOptions="End"

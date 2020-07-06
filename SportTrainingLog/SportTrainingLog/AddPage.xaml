@@ -5,19 +5,34 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:sys="clr-namespace:System;assembly=netstandard"
              mc:Ignorable="d"
-             x:Class="SportTrainingLog.AddPage">
+             x:Class="SportTrainingLog.AddPage"
+             Title="Add New Session">
     <ContentPage.ToolbarItems>
 
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Date of Session" FontSize="20"/>
-            <DatePicker x:Name="SessionDatePicker" MinimumDate="1/1/2019" MaximumDate="{x:Static sys:DateTime.Now}" Format="D"/>
-            <Label Text="Session Name" FontSize="20"/>
-            <Entry x:Name="EntrySessionName" Placeholder="Eg. training" ClearButtonVisibility="WhileEditing" />
-            <Label Text="Session Details" FontSize="20"/>
-            <Editor x:Name="EditorSessionDetails" Placeholder="Eg. net" AutoSize="TextChanges" />
-            <Grid x:Name="UploadButtons" RowSpacing="1" ColumnSpacing="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+            
+            <Label Text="Session Name" FontSize="20" TextColor="Black"/>
+            <Entry x:Name="EntrySessionName" Placeholder="Eg. training" ClearButtonVisibility="WhileEditing" TextColor="Black"/>
+            
+            <Grid x:Name="SessionDateTime" RowSpacing="1" ColumnSpacing="1" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label Text="Date of Session" FontSize="20" Grid.Row="0" Grid.Column="0" TextColor="Black"/>
+                <DatePicker x:Name="SessionDatePicker" MinimumDate="1/1/2019" MaximumDate="{x:Static sys:DateTime.Now}" Format="D" Grid.Row="1" Grid.Column="0" TextColor="Black"/>
+                <Label Text="Date of Session" FontSize="20" Grid.Row="0" Grid.Column="1" TextColor="Black"/>
+                <TimePicker x:Name="SessionTimePicker" Format="t" Grid.Row="1" Grid.Column="1" TextColor="Black"/>
+            </Grid>
+            <Label Text="Session Details" FontSize="20" TextColor="Black"/>
+            <Editor x:Name="EditorSessionDetails" Placeholder="Eg. net" AutoSize="TextChanges" TextColor="Black"/>
+            <Grid x:Name="UploadButtons" RowSpacing="1" ColumnSpacing="1" HorizontalOptions="FillAndExpand" VerticalOptions="End" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />

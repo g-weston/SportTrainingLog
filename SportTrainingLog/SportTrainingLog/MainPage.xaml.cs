@@ -24,6 +24,16 @@ namespace SportTrainingLog
             SessionLogView.ItemsSource = await App.Database.GetSessionsAsync();
         }
 
+        private async void SessionListItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            await Navigation.PushAsync(new SessionDetailPage { BindingContext = e.Item as Session });
+        }
+        
+        public async void DetailsClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SessionDetailPage { BindingContext = (sender as MenuItem).BindingContext as Session });
+        }
+
         private async void DeleteClicked(object sender, EventArgs e)
         {
             Session sessionToDelete = (sender as MenuItem).BindingContext as Session;

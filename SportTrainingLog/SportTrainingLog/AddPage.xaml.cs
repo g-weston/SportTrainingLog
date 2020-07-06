@@ -15,11 +15,14 @@ namespace SportTrainingLog
         public AddPage()
         {
             InitializeComponent();
+            SessionDatePicker.Date = DateTimeOffset.Now.Date;
+            SessionTimePicker.Time = DateTimeOffset.Now.TimeOfDay;
         }
 
         private void ClearInput()
         {
-            SessionDatePicker.Date = DateTime.Now;
+            SessionDatePicker.Date = DateTimeOffset.Now.Date;
+            SessionTimePicker.Time = DateTimeOffset.Now.TimeOfDay;
             EntrySessionName.Text = null;
             EditorSessionDetails.Text = null;
         }
@@ -29,18 +32,19 @@ namespace SportTrainingLog
         }
         private async void AddClicked(object sender, EventArgs e)
         {
-            DateTime sessionDate = SessionDatePicker.Date;
+            DateTimeOffset sessionDateTimeOffset = SessionDatePicker.Date + SessionTimePicker.Time;
+            string sessionDateTimeOffsetString = sessionDateTimeOffset.ToString("dd/MM/yyyy HH:mm");
             string sessionName = EntrySessionName.Text;
             string sessionDetails = EditorSessionDetails.Text;
 
             var session = new Session
             {
-                SessionDate = sessionDate,
+                SessionDateTimeOffset = sessionDateTimeOffset,
+                SessionDateTimeOffsetString = sessionDateTimeOffsetString,
                 SessionTitle = sessionName,
                 SessionDetails = sessionDetails
             };
             await App.Database.SaveSessionAsync(session);
-            //await Navigation.PopAsync();
             await DisplayAlert("Your session has been added", null, "Ok");
 
             ClearInput();

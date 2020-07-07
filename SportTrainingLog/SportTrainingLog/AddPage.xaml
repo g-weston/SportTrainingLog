@@ -11,38 +11,463 @@
 
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            
-            <Label Text="Session Name" FontSize="20" TextColor="Black"/>
-            <Entry x:Name="EntrySessionName" Placeholder="Eg. training" ClearButtonVisibility="WhileEditing" TextColor="Black"/>
-            
-            <Grid x:Name="SessionDateTime" RowSpacing="1" ColumnSpacing="1" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Label Text="Date of Session" FontSize="20" Grid.Row="0" Grid.Column="0" TextColor="Black"/>
-                <DatePicker x:Name="SessionDatePicker" MinimumDate="1/1/2019" MaximumDate="{x:Static sys:DateTime.Now}" Format="D" Grid.Row="1" Grid.Column="0" TextColor="Black"/>
-                <Label Text="Date of Session" FontSize="20" Grid.Row="0" Grid.Column="1" TextColor="Black"/>
-                <TimePicker x:Name="SessionTimePicker" Format="t" Grid.Row="1" Grid.Column="1" TextColor="Black"/>
-            </Grid>
-            <Label Text="Session Details" FontSize="20" TextColor="Black"/>
-            <Editor x:Name="EditorSessionDetails" Placeholder="Eg. net" AutoSize="TextChanges" TextColor="Black"/>
-            <Grid x:Name="UploadButtons" RowSpacing="1" ColumnSpacing="1" HorizontalOptions="FillAndExpand" VerticalOptions="End" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Button Text="Cancel" Grid.Row="0" Grid.Column="0" Clicked="CancelClicked"/>
-                <Button Text="Upload" Grid.Row="0" Grid.Column="1" Clicked="AddClicked"/>
-            </Grid>
-        </StackLayout>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <ScrollView>
+                <StackLayout >
+                    <Label Text="Session Name" 
+                           FontSize="20" 
+                           TextColor="DodgerBlue"
+                           HorizontalOptions="Center"/>
+                    <Entry x:Name="EntrySessionName" 
+                           Placeholder="Eg. training" 
+                           ClearButtonVisibility="WhileEditing" 
+                           TextColor="Gray"/>
+                    <Grid x:Name="SessionDateTime" 
+                          RowSpacing="1" 
+                          ColumnSpacing="1" 
+                          HorizontalOptions="FillAndExpand" 
+                          VerticalOptions="Fill" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Text="Date of Session" 
+                               FontSize="20" 
+                               Grid.Row="0" 
+                               Grid.Column="0" 
+                               TextColor="DodgerBlue"
+                               HorizontalOptions="Center"/>
+                        <DatePicker x:Name="SessionDatePicker" 
+                                    MinimumDate="1/1/2019" 
+                                    MaximumDate="{x:Static sys:DateTime.Now}" 
+                                    Format="D" 
+                                    Grid.Row="1" 
+                                    Grid.Column="0" 
+                                    TextColor="Gray"/>
+                        <Label Text="Time of Session" 
+                               FontSize="20" 
+                               Grid.Row="0" 
+                               Grid.Column="1" 
+                               TextColor="DodgerBlue"
+                               HorizontalOptions="Center"/>
+                        <TimePicker x:Name="SessionTimePicker" 
+                                    Format="t" 
+                                    Grid.Row="1" 
+                                    Grid.Column="1" 
+                                    TextColor="Gray"/>
+                    </Grid>
+                    <Label Text="Session Length (minutes)" 
+                           FontSize="20" 
+                           TextColor="DodgerBlue"
+                           HorizontalOptions="Center"/>
+                    <Entry x:Name="EntrySessionLength" 
+                           ClearButtonVisibility="WhileEditing"
+                           Placeholder="Eg. 30"
+                           TextColor="Gray"
+                           Keyboard="Numeric"/>
+                    <Label Text="Session Details" 
+                           FontSize="20" 
+                           TextColor="DodgerBlue"
+                           HorizontalOptions="Center"/>
+                    <Editor x:Name="EditorSessionDetails" 
+                            Placeholder="Eg. net" 
+                            AutoSize="TextChanges" 
+                            TextColor="Gray"/>
+                    <Grid x:Name="TypeSessionButtons" 
+                          RowSpacing="1" 
+                          ColumnSpacing="1" 
+                          HorizontalOptions="CenterAndExpand" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Button x:Name="CricketSessionButton" 
+                                Text="Cricket Session" 
+                                BackgroundColor="DodgerBlue" 
+                                BorderColor="DodgerBlue" 
+                                BorderWidth="2" 
+                                CornerRadius="10" 
+                                Margin="5" 
+                                TextColor="White" 
+                                Grid.Row="0" 
+                                Grid.Column="0" 
+                                Clicked="CricketSessionClicked"/>
+                        <Button x:Name="FitnessSessionButton" 
+                                Text="Fitness Session" 
+                                BackgroundColor="White" 
+                                BorderColor="DodgerBlue" 
+                                BorderWidth="2" 
+                                CornerRadius="10" 
+                                Margin="5" 
+                                TextColor="DodgerBlue" 
+                                Grid.Row="0" 
+                                Grid.Column="1" 
+                                Clicked="FitnessSessionClicked"/>
+                    </Grid>
+                    <StackLayout x:Name="CricketSessionDetails">
+                        <Grid x:Name="CricketSessionDetailsButtons" 
+                              RowSpacing="1" 
+                              ColumnSpacing="1" 
+                              HorizontalOptions="CenterAndExpand" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Button x:Name="BattingCricketSessionButton"
+                                    Text="Batting" 
+                                    Grid.Row="0" 
+                                    Grid.Column="0" 
+                                    Clicked="BattingClicked"
+                                    BackgroundColor="DodgerBlue" 
+                                    BorderColor="DodgerBlue" 
+                                    BorderWidth="2" 
+                                    CornerRadius="10" 
+                                    Margin="5" 
+                                    TextColor="White"/>
+                            <Button x:Name="BowlingCricketSessionButton"
+                                    Text="Bowling" 
+                                    Grid.Row="0" 
+                                    Grid.Column="1" 
+                                    Clicked="BowlingClicked"
+                                    BackgroundColor="White" 
+                                    BorderColor="DodgerBlue" 
+                                    BorderWidth="2" 
+                                    CornerRadius="10" 
+                                    Margin="5" 
+                                    TextColor="DodgerBlue"/>
+                            <Button x:Name="FieldingCricketSessionButton"
+                                    Text="Fielding" 
+                                    Grid.Row="0" 
+                                    Grid.Column="2" 
+                                    Clicked="FieldingClicked"
+                                    BackgroundColor="White" 
+                                    BorderColor="DodgerBlue" 
+                                    BorderWidth="2" 
+                                    CornerRadius="10" 
+                                    Margin="5" 
+                                    TextColor="DodgerBlue"/>
+                        </Grid>
+                        <StackLayout x:Name="BattingDetails" 
+                                     IsVisible="True">
+                            <Label Text="Batting Details"
+                                   FontSize="20"
+                                   TextColor="DodgerBlue"
+                                   HorizontalOptions="Center"/>
+                            <Grid x:Name="BattingDetailsGrid" 
+                                  RowSpacing="1" 
+                                  ColumnSpacing="1" 
+                                  HorizontalOptions="CenterAndExpand" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Switch Toggled="BattingDetailsSkillsWorkedSwitch" 
+                                        ThumbColor="DodgerBlue"
+                                        OnColor="MediumVioletRed"
+                                        HorizontalOptions="Center" 
+                                        Grid.Row="0" 
+                                        Grid.Column="0"/>
+                                <Label Text="Batting Skills Worked On" 
+                                       VerticalOptions="Center" 
+                                       TextColor="Gray"
+                                       Grid.Row="0" 
+                                       Grid.Column="1" 
+                                       Grid.ColumnSpan="4"/>
+                                <Editor x:Name="BattingDetailsSkillsWorkedEditor" 
+                                        Placeholder="Eg. Cover drive" 
+                                        AutoSize="TextChanges" 
+                                        TextColor="Gray" 
+                                        Grid.Row="1" 
+                                        Grid.Column="0" 
+                                        Grid.ColumnSpan="5" 
+                                        IsVisible="False" />
+                                <Switch Toggled="BattingDetailsSkillsToWorkOnSwitch" 
+                                        ThumbColor="DodgerBlue"
+                                        OnColor="MediumVioletRed"
+                                        HorizontalOptions="Center" 
+                                        Grid.Row="2" 
+                                        Grid.Column="0"/>
+                                <Label Text="Batting Skills To Work On" 
+                                       VerticalOptions="Center"
+                                       TextColor="Gray"
+                                       Grid.Row="2" 
+                                       Grid.Column="1" 
+                                       Grid.ColumnSpan="4"/>
+                                <Editor x:Name="BattingDetailsSkillsToWorkOnEditor" 
+                                        Placeholder="Eg. Short ball practice" 
+                                        AutoSize="TextChanges" 
+                                        TextColor="Gray" 
+                                        Grid.Row="3" 
+                                        Grid.Column="0" 
+                                        Grid.ColumnSpan="5" 
+                                        IsVisible="False" />
+                                <Switch Toggled="BattingDetailsBallsFacedSwitch" 
+                                        ThumbColor="DodgerBlue"
+                                        OnColor="MediumVioletRed"
+                                        HorizontalOptions="Center" 
+                                        Grid.Row="4" 
+                                        Grid.Column="0"/>
+                                <Label Text="Balls faced while batting" 
+                                       VerticalOptions="Center"
+                                       TextColor="Gray"
+                                       Grid.Row="4" 
+                                       Grid.Column="1" 
+                                       Grid.ColumnSpan="4"/>
+                                <Entry x:Name="BattingDetailsBallsFacedEntry" 
+                                       Placeholder="Eg. 20" 
+                                       TextColor="Gray" 
+                                       Grid.Row="5" 
+                                       Grid.Column="0" 
+                                       Grid.ColumnSpan="5" 
+                                       Keyboard="Numeric" 
+                                       IsVisible="False"/>
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout x:Name="BowlingDetails" 
+                                     IsVisible="False">
+                            <Label Text="Bowling Details"
+                                   FontSize="20"
+                                   TextColor="DodgerBlue"
+                                   HorizontalOptions="Center"/>
+                            <Grid x:Name="BowlingDetailsGrid" 
+                                  RowSpacing="1" 
+                                  ColumnSpacing="1" 
+                                  HorizontalOptions="CenterAndExpand" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Switch Toggled="BowlingDetailsSkillsWorkedSwitch"
+                                        ThumbColor="DodgerBlue"
+                                        OnColor="MediumVioletRed"
+                                        HorizontalOptions="Center" 
+                                        Grid.Row="0" 
+                                        Grid.Column="0"/>
+                                <Label Text="Bowling Skills Worked On"
+                                       TextColor="Gray"
+                                       VerticalOptions="Center" 
+                                       Grid.Row="0" 
+                                       Grid.Column="1" 
+                                       Grid.ColumnSpan="4"/>
+                                <Editor x:Name="BowlingDetailsSkillsWorkedEditor" 
+                                        Placeholder="Eg. Yorker" 
+                                        AutoSize="TextChanges" 
+                                        TextColor="Gray" 
+                                        Grid.Row="1" 
+                                        Grid.Column="0" 
+                                        Grid.ColumnSpan="5" 
+                                        IsVisible="False" />
+                                <Switch Toggled="BowlingDetailsSkillsToWorkOnSwitch" 
+                                        ThumbColor="DodgerBlue"
+                                        OnColor="MediumVioletRed"
+                                        HorizontalOptions="Center" 
+                                        Grid.Row="2" 
+                                        Grid.Column="0"/>
+                                <Label Text="Bowling Skills To Work On" 
+                                       VerticalOptions="Center" 
+                                       TextColor="Gray"
+                                       Grid.Row="2" 
+                                       Grid.Column="1" 
+                                       Grid.ColumnSpan="4"/>
+                                <Editor x:Name="BowlingDetailsSkillsToWorkOnEditor" 
+                                        Placeholder="Eg. Stock length ball" 
+                                        AutoSize="TextChanges" 
+                                        TextColor="Gray" 
+                                        Grid.Row="3" 
+                                        Grid.Column="0" 
+                                        Grid.ColumnSpan="5" 
+                                        IsVisible="False" />
+                                <Switch Toggled="BowlingDetailsBallsBowledSwitch" 
+                                        ThumbColor="DodgerBlue"
+                                        OnColor="MediumVioletRed"
+                                        HorizontalOptions="Center" 
+                                        Grid.Row="4" 
+                                        Grid.Column="0"/>
+                                <Label Text="Balls bowled" 
+                                       VerticalOptions="Center" 
+                                       TextColor="Gray"
+                                       Grid.Row="4" 
+                                       Grid.Column="1" 
+                                       Grid.ColumnSpan="4"/>
+                                <Entry x:Name="BowlingDetailsBallsBowledEntry" 
+                                       Placeholder="Eg. 20" 
+                                       TextColor="Gray" 
+                                       Grid.Row="5" 
+                                       Grid.Column="0" 
+                                       Grid.ColumnSpan="5" 
+                                       Keyboard="Numeric" 
+                                       IsVisible="False"/>
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout x:Name="FieldingDetails" 
+                                     IsVisible="False">
+                            <Label Text="Fielding Details"
+                                   FontSize="20"
+                                   TextColor="DodgerBlue"
+                                   HorizontalOptions="Center"/>
+                            <Grid x:Name="FieldingDetailsGrid" 
+                                  RowSpacing="1" 
+                                  ColumnSpacing="1" 
+                                  HorizontalOptions="CenterAndExpand" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Switch Toggled="FieldingDetailsSkillsWorkedSwitch" 
+                                        ThumbColor="DodgerBlue"
+                                        OnColor="MediumVioletRed"
+                                        HorizontalOptions="Center" 
+                                        Grid.Row="0" 
+                                        Grid.Column="0"/>
+                                <Label Text="Fielding Skills Worked On" 
+                                       VerticalOptions="Center" 
+                                       TextColor="Gray"
+                                       Grid.Row="0" 
+                                       Grid.Column="1" 
+                                       Grid.ColumnSpan="4"/>
+                                <Editor x:Name="FieldingDetailsSkillsWorkedEditor" 
+                                        Placeholder="Eg. Slip catching" 
+                                        AutoSize="TextChanges" 
+                                        TextColor="Gray" 
+                                        Grid.Row="1" 
+                                        Grid.Column="0" 
+                                        Grid.ColumnSpan="5" 
+                                        IsVisible="False" />
+                                <Switch Toggled="FieldingDetailsSkillsToWorkOnSwitch" 
+                                        ThumbColor="DodgerBlue"
+                                        OnColor="MediumVioletRed"
+                                        HorizontalOptions="Center" 
+                                        Grid.Row="2" 
+                                        Grid.Column="0"/>
+                                <Label Text="Fielding Skills To Work On" 
+                                       VerticalOptions="Center" 
+                                       TextColor="Gray"
+                                       Grid.Row="2" 
+                                       Grid.Column="1" 
+                                       Grid.ColumnSpan="4"/>
+                                <Editor x:Name="FieldingDetailsSkillsToWorkOnEditor" 
+                                        Placeholder="Eg. High catches"
+                                        AutoSize="TextChanges" 
+                                        TextColor="Gray" 
+                                        Grid.Row="3" 
+                                        Grid.Column="0" 
+                                        Grid.ColumnSpan="5" 
+                                        IsVisible="False" />
+                                <Switch Toggled="FieldingDetailsBallsFieldedSwitch" 
+                                        ThumbColor="DodgerBlue"
+                                        OnColor="MediumVioletRed"
+                                        HorizontalOptions="Center" 
+                                        Grid.Row="4" 
+                                        Grid.Column="0"/>
+                                <Label Text="Balls fielded" 
+                                       VerticalOptions="Center" 
+                                       TextColor="Gray"
+                                       Grid.Row="4" 
+                                       Grid.Column="1" 
+                                       Grid.ColumnSpan="4"/>
+                                <Entry x:Name="FieldingDetailsBallsFieldedEntry" 
+                                       Placeholder="Eg. 20" 
+                                       TextColor="Gray" 
+                                       Grid.Row="5" 
+                                       Grid.Column="0" 
+                                       Grid.ColumnSpan="5" 
+                                       Keyboard="Numeric" 
+                                       IsVisible="False"/>
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout x:Name="FitnessSessionDetails"
+                                 IsVisible="False">
+                        <Label Text="Fielding Details"
+                               FontSize="20" 
+                               TextColor="DodgerBlue"
+                               HorizontalOptions="Center"/>
+                        <Editor x:Name="FitnessSessionDetailsEditor" 
+                                Placeholder="Eg. 5km run" 
+                                AutoSize="TextChanges" 
+                                TextColor="Gray"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout VerticalOptions="EndAndExpand">
+                <Grid x:Name="UploadButtons" 
+                      RowSpacing="1" 
+                      ColumnSpacing="1" 
+                      HorizontalOptions="CenterAndExpand" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button Text="Cancel" 
+                            Grid.Row="0" 
+                            Grid.Column="0" 
+                            Clicked="CancelClicked"
+                            BackgroundColor="DodgerBlue" 
+                            BorderColor="DodgerBlue" 
+                            BorderWidth="2" 
+                            CornerRadius="10" 
+                            Margin="5" 
+                            TextColor="White"/>
+                    <Button Text="Upload" 
+                            Grid.Row="0" 
+                            Grid.Column="1" 
+                            Clicked="AddClicked"
+                            BackgroundColor="DodgerBlue" 
+                            BorderColor="DodgerBlue" 
+                            BorderWidth="2" 
+                            CornerRadius="10" 
+                            Margin="5" 
+                            TextColor="White"/>
+                </Grid>
+            </StackLayout>
+            </StackLayout>
     </ContentPage.Content>
 </ContentPage>

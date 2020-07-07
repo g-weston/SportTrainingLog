@@ -16,6 +16,8 @@ namespace SportTrainingLog
         public MainPage()
         {
             InitializeComponent();
+
+            SessionLogView.RefreshCommand = new Command(RefreshMethod);
         }
 
         protected override async void OnAppearing()
@@ -24,6 +26,12 @@ namespace SportTrainingLog
             SessionLogView.ItemsSource = await App.Database.GetSessionsAsync();
         }
 
+        public async void RefreshMethod()
+        {
+            SessionLogView.ItemsSource = await App.Database.GetSessionsAsync();
+            SessionLogView.IsRefreshing = false;
+        }
+        
         private async void SessionListItemTapped(object sender, ItemTappedEventArgs e)
         {
             await Navigation.PushAsync(new SessionDetailPage { BindingContext = e.Item as Session });

@@ -11,19 +11,19 @@
              android:TabbedPage.BarBackgroundColor="DodgerBlue">
   <!--Pages can be added as references or inline-->
   <TabbedPage.Children>
-      <NavigationPage Title="Add">
+      <NavigationPage IconImageSource="add_image_white.png">
           <x:Arguments>
               <sportTrainingLog:AddPage />
           </x:Arguments>
       </NavigationPage>
 
-      <NavigationPage Title="Browse" >
+      <NavigationPage IconImageSource="home_image_white.png">
           <x:Arguments>
               <sportTrainingLog:MainPage />
             </x:Arguments>
       </NavigationPage>
 
-      <NavigationPage Title="Settings">
+      <NavigationPage IconImageSource="settings_image_white.png">
           <x:Arguments>
               <sportTrainingLog:SettingsPage />
             </x:Arguments>

@@ -13,6 +13,7 @@
                   SeparatorVisibility="None"
                   HasUnevenRows="True"
                   IsPullToRefreshEnabled="True"
+                  
                   ItemTapped="SessionListItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>

@@ -7,35 +7,250 @@
              x:Class="SportTrainingLog.SessionDetailPage"
              Title="Session Details">
     <ContentPage.Content>
-        <StackLayout>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Label Text="{Binding SessionTitle}"
-                       TextColor="Black" 
-                       FontSize="20"
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Text="{Binding SessionTitle}"
+                       TextColor="DodgerBlue" 
+                       FontSize="40"
                        Grid.Row="0"
-                       Grid.ColumnSpan="5"/>
-                <Label Text="{Binding SessionDateTimeOffsetString}"
-                       TextColor="Black" 
-                       FontSize="10"
-                       HorizontalOptions="End"
+                       Grid.ColumnSpan="3"/>
+                    <Label Text="{Binding SessionDateTimeOffsetString}"
+                       TextColor="Gray" 
+                       FontSize="15"
+                       HorizontalOptions="EndAndExpand"
                        VerticalOptions="Start"
                        Grid.Row="0"
-                       Grid.Column="5"/>
-            </Grid>
-            <Label Text="{Binding SessionDetails}"
-                   TextColor="Black"
-                   FontSize="10"/>
-        </StackLayout>
+                       Grid.Column="3"/>
+                </Grid>
+                <Grid x:Name="SessionLengthGrid" 
+                      RowSpacing="1" 
+                      ColumnSpacing="1" 
+                      HorizontalOptions="FillAndExpand" 
+                      VerticalOptions="Fill" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Text="Session Length"
+                           FontSize="15"
+                           TextColor="Gray"
+                           Grid.Row="0"
+                           Grid.Column="0"/>
+                    <Label Text="{Binding SessionLength}"
+                           FontSize="15"
+                           TextColor="Gray"
+                           Grid.Row="0"
+                           Grid.Column="1"/>
+                </Grid>
+                <Label Text="{Binding SessionDetails}"
+                           TextColor="Gray"
+                           FontSize="15"/>
+                <BoxView Color="DodgerBlue"
+                         HeightRequest="2"
+                         HorizontalOptions="FillAndExpand"
+                         Margin="10"/>
+                <StackLayout x:Name="BattingSessionDisplay" 
+                         IsVisible="True">
+                    <Label Text="Batting"
+                       TextColor="DodgerBlue"
+                       FontSize="25"/>
+                    <Grid x:Name="BattingSessionDetailsPage" 
+                      RowSpacing="1" 
+                      ColumnSpacing="1" 
+                      HorizontalOptions="CenterAndExpand" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <Label Text="Skills Worked On"
+                           TextColor="Gray"
+                           FontSize="15"
+                           Grid.Row="0"
+                           Grid.Column="0"/>
+                        <Label Text="{Binding BattingSessionSkillsWorked}"
+                           FontSize="15"
+                           TextColor="Gray"
+                           Grid.Row="0"
+                           Grid.Column="1"
+                           Grid.ColumnSpan="3"/>
+                        <Label Text="Skills To Work On"
+                           TextColor="Gray"
+                           FontSize="15"
+                           Grid.Row="1"
+                           Grid.Column="0"/>
+                        <Label Text="{Binding BattingSessionSkillsToWorkOn}"
+                           FontSize="15"
+                           TextColor="Gray"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           Grid.ColumnSpan="3"/>
+                        <Label Text="Balls Faced"
+                           TextColor="Gray"
+                           FontSize="15"
+                           Grid.Row="2"
+                           Grid.Column="0"/>
+                        <Label Text="{Binding BattingSessionBallsFaced}"
+                           FontSize="15"
+                           TextColor="Gray"
+                           Grid.Row="2"
+                           Grid.Column="1"
+                           Grid.ColumnSpan="3"/>
+                    </Grid>
+
+                </StackLayout>
+                <BoxView Color="DodgerBlue"
+                     HeightRequest="2"
+                     HorizontalOptions="FillAndExpand"
+                     Margin="10"/>
+                <StackLayout x:Name="BowlingSessionDisplay" 
+                         IsVisible="True">
+                    <Label Text="Bowling"
+                       TextColor="DodgerBlue"
+                       FontSize="25"/>
+                    <Grid x:Name="BowlingSessionDetailsPage" 
+                      RowSpacing="1" 
+                      ColumnSpacing="1" 
+                      HorizontalOptions="CenterAndExpand" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Text="Skills Worked On"
+                           TextColor="Gray"
+                           FontSize="15"
+                           Grid.Row="0"
+                           Grid.Column="0"/>
+                        <Label Text="{Binding BowlingSessionSkillsWorked}"
+                           FontSize="15"
+                           TextColor="Gray"
+                           Grid.Row="0"
+                           Grid.Column="1"
+                           Grid.ColumnSpan="3"/>
+                        <Label Text="Skills To Work On"
+                           TextColor="Gray"
+                           FontSize="15"
+                           Grid.Row="1"
+                           Grid.Column="0"/>
+                        <Label Text="{Binding BowlingSessionSkillsToWorkOn}"
+                           FontSize="15"
+                           TextColor="Gray"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           Grid.ColumnSpan="3"/>
+                        <Label Text="Balls Bowled"
+                           TextColor="Gray"
+                           FontSize="15"
+                           Grid.Row="2"
+                           Grid.Column="0"/>
+                        <Label Text="{Binding BowlingSessionBallsBowled}"
+                           FontSize="15"
+                           TextColor="Gray"
+                           Grid.Row="2"
+                           Grid.Column="1"
+                           Grid.ColumnSpan="3"/>
+                    </Grid>
+                </StackLayout>
+                <BoxView Color="DodgerBlue"
+                     HeightRequest="2"
+                     HorizontalOptions="FillAndExpand"
+                     Margin="10"/>
+                <StackLayout x:Name="FieldingSessionDisplay" 
+                         IsVisible="True">
+                    <Label Text="Fielding"
+                       TextColor="DodgerBlue"
+                       FontSize="25"/>
+                    <Grid x:Name="FieldingSessionDetailsPage" 
+                      RowSpacing="1" 
+                      ColumnSpacing="1" 
+                      HorizontalOptions="CenterAndExpand" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Text="Skills Worked On"
+                           TextColor="Gray"
+                           FontSize="15"
+                           Grid.Row="0"
+                           Grid.Column="0"/>
+                        <Label Text="{Binding FieldingSessionSkillsWorked}"
+                           FontSize="15"
+                           TextColor="Gray"
+                           Grid.Row="0"
+                           Grid.Column="1"
+                           Grid.ColumnSpan="3"/>
+                        <Label Text="Skills To Work On"
+                           TextColor="Gray"
+                           FontSize="15"
+                           Grid.Row="1"
+                           Grid.Column="0"/>
+                        <Label Text="{Binding FieldingSessionSkillsToWorkOn}"
+                           FontSize="15"
+                           TextColor="Gray"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           Grid.ColumnSpan="3"/>
+                        <Label Text="Balls Fielded"
+                           TextColor="Gray"
+                           FontSize="15"
+                           Grid.Row="2"
+                           Grid.Column="0"/>
+                        <Label Text="{Binding FieldingSessionBallsFielded}"
+                           FontSize="15"
+                           TextColor="Gray"
+                           Grid.Row="2"
+                           Grid.Column="1"
+                           Grid.ColumnSpan="3"/>
+                    </Grid>
+                </StackLayout>
+                <BoxView Color="DodgerBlue"
+                         HeightRequest="2"
+                         HorizontalOptions="FillAndExpand"
+                         Margin="10"/>
+                <StackLayout x:Name="FitnessSessionDetails"
+                             IsVisible="True">
+                    <Label Text="Fitness"
+                           TextColor="DodgerBlue"
+                           FontSize="25"/>
+                    <Label Text="{Binding FitnessSessionDetails}"
+                           TextColor="Gray"
+                           FontSize="15"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

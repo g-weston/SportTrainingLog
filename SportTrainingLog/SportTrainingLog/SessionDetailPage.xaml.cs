@@ -15,7 +15,6 @@ namespace SportTrainingLog
         public SessionDetailPage()
         {
             InitializeComponent();
-
         }
         
         

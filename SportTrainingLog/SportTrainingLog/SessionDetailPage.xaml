@@ -58,15 +58,15 @@
                 <Label Text="{Binding SessionDetails}"
                            TextColor="Gray"
                            FontSize="15"/>
-                <BoxView Color="DodgerBlue"
-                         HeightRequest="2"
-                         HorizontalOptions="FillAndExpand"
-                         Margin="10"/>
                 <StackLayout x:Name="BattingSessionDisplay" 
-                         IsVisible="True">
+                             IsVisible="True">
+                    <BoxView Color="DodgerBlue"
+                             HeightRequest="2"
+                             HorizontalOptions="FillAndExpand"
+                             Margin="10"/>
                     <Label Text="Batting"
-                       TextColor="DodgerBlue"
-                       FontSize="25"/>
+                           TextColor="DodgerBlue"
+                           FontSize="25"/>
                     <Grid x:Name="BattingSessionDetailsPage" 
                       RowSpacing="1" 
                       ColumnSpacing="1" 
@@ -89,6 +89,7 @@
                            Grid.Row="0"
                            Grid.Column="0"/>
                         <Label Text="{Binding BattingSessionSkillsWorked}"
+                               x:Name="BattingSessionSkillsWorkedLabel"
                            FontSize="15"
                            TextColor="Gray"
                            Grid.Row="0"
@@ -100,6 +101,7 @@
                            Grid.Row="1"
                            Grid.Column="0"/>
                         <Label Text="{Binding BattingSessionSkillsToWorkOn}"
+                               x:Name="BattingSessionSkillsToWorkOnLabel"
                            FontSize="15"
                            TextColor="Gray"
                            Grid.Row="1"
@@ -111,6 +113,7 @@
                            Grid.Row="2"
                            Grid.Column="0"/>
                         <Label Text="{Binding BattingSessionBallsFaced}"
+                               x:Name="BattingSessionBallsBowledLabel"
                            FontSize="15"
                            TextColor="Gray"
                            Grid.Row="2"
@@ -119,15 +122,15 @@
                     </Grid>
 
                 </StackLayout>
-                <BoxView Color="DodgerBlue"
-                     HeightRequest="2"
-                     HorizontalOptions="FillAndExpand"
-                     Margin="10"/>
                 <StackLayout x:Name="BowlingSessionDisplay" 
-                         IsVisible="True">
+                             IsVisible="True">
+                    <BoxView Color="DodgerBlue"
+                             HeightRequest="2"
+                             HorizontalOptions="FillAndExpand"
+                             Margin="10"/>
                     <Label Text="Bowling"
-                       TextColor="DodgerBlue"
-                       FontSize="25"/>
+                           TextColor="DodgerBlue"
+                           FontSize="25"/>
                     <Grid x:Name="BowlingSessionDetailsPage" 
                       RowSpacing="1" 
                       ColumnSpacing="1" 
@@ -149,6 +152,7 @@
                            Grid.Row="0"
                            Grid.Column="0"/>
                         <Label Text="{Binding BowlingSessionSkillsWorked}"
+                               x:Name="BowlingSessionSkillsWorkedLabel"
                            FontSize="15"
                            TextColor="Gray"
                            Grid.Row="0"
@@ -160,6 +164,7 @@
                            Grid.Row="1"
                            Grid.Column="0"/>
                         <Label Text="{Binding BowlingSessionSkillsToWorkOn}"
+                               x:Name="BowlingSessionSkillsToWorkOnLabel"
                            FontSize="15"
                            TextColor="Gray"
                            Grid.Row="1"
@@ -171,6 +176,7 @@
                            Grid.Row="2"
                            Grid.Column="0"/>
                         <Label Text="{Binding BowlingSessionBallsBowled}"
+                               x:Name="BowlingSessionBallsBowledLabel"
                            FontSize="15"
                            TextColor="Gray"
                            Grid.Row="2"
@@ -178,15 +184,15 @@
                            Grid.ColumnSpan="3"/>
                     </Grid>
                 </StackLayout>
-                <BoxView Color="DodgerBlue"
-                     HeightRequest="2"
-                     HorizontalOptions="FillAndExpand"
-                     Margin="10"/>
                 <StackLayout x:Name="FieldingSessionDisplay" 
-                         IsVisible="True">
+                             IsVisible="True">
+                    <BoxView Color="DodgerBlue"
+                             HeightRequest="2"
+                             HorizontalOptions="FillAndExpand"
+                             Margin="10"/>
                     <Label Text="Fielding"
-                       TextColor="DodgerBlue"
-                       FontSize="25"/>
+                           TextColor="DodgerBlue"
+                           FontSize="25"/>
                     <Grid x:Name="FieldingSessionDetailsPage" 
                       RowSpacing="1" 
                       ColumnSpacing="1" 
@@ -208,6 +214,7 @@
                            Grid.Row="0"
                            Grid.Column="0"/>
                         <Label Text="{Binding FieldingSessionSkillsWorked}"
+                               x:Name="FieldingSessionSkillsWorkedLabel"
                            FontSize="15"
                            TextColor="Gray"
                            Grid.Row="0"
@@ -219,6 +226,7 @@
                            Grid.Row="1"
                            Grid.Column="0"/>
                         <Label Text="{Binding FieldingSessionSkillsToWorkOn}"
+                               x:Name="FieldingSessionSkillsToWorkOnLabel"
                            FontSize="15"
                            TextColor="Gray"
                            Grid.Row="1"
@@ -230,6 +238,7 @@
                            Grid.Row="2"
                            Grid.Column="0"/>
                         <Label Text="{Binding FieldingSessionBallsFielded}"
+                               x:Name="FieldingSessionBallsFieldedLabel"
                            FontSize="15"
                            TextColor="Gray"
                            Grid.Row="2"
@@ -237,19 +246,24 @@
                            Grid.ColumnSpan="3"/>
                     </Grid>
                 </StackLayout>
-                <BoxView Color="DodgerBlue"
-                         HeightRequest="2"
-                         HorizontalOptions="FillAndExpand"
-                         Margin="10"/>
                 <StackLayout x:Name="FitnessSessionDetails"
                              IsVisible="True">
+                    <BoxView Color="DodgerBlue"
+                             HeightRequest="2"
+                             HorizontalOptions="FillAndExpand"
+                             Margin="10"/>
                     <Label Text="Fitness"
                            TextColor="DodgerBlue"
                            FontSize="25"/>
                     <Label Text="{Binding FitnessSessionDetails}"
+                           x:Name="FitnessSessionSessionDetailsLabel"
                            TextColor="Gray"
                            FontSize="15"/>
                 </StackLayout>
+                <BoxView Color="DodgerBlue"
+                         HeightRequest="2"
+                         HorizontalOptions="FillAndExpand"
+                         Margin="10"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

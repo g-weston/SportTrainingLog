@@ -55,7 +55,7 @@ namespace SportTrainingLog
             int sessionLength = int.Parse(EntrySessionLength.Text);
             string battingSessionSkillsWorked = BattingDetailsSkillsWorkedEditor.Text;
             string battingSessionSkillsToWorkOn = BattingDetailsSkillsToWorkOnEditor.Text;
-            // below implement checking for entries that arent numbers 
+            // below implement checking for entries that aren't numbers 
             int battingSessionBallsFaced = int.Parse(BattingDetailsBallsFacedEntry.Text);
             string bowlingSessionSkillsWorked = BowlingDetailsSkillsWorkedEditor.Text;
             string bowlingSessionSkillsToWorkOn = BowlingDetailsSkillsToWorkOnEditor.Text;
